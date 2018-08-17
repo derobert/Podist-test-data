@@ -6,3 +6,15 @@ MountainKing.flac: Recording of “In the Hall of the Mountain King” from
 Grieg’s Peer Gynt Suite. The recording is by the Musopen Symphony, and
 is released in to the public domain. Some details are at
 <https://musopen.org/music/777-peer-gynt-suite-no-1-op-46/>
+
+stereo-mono: Made by me. This is an MP3 file that switches channel count
+in the middle of the file; previously this broke Podist (thank you,
+Serial). To regenerate this from the Audacity project, export the two
+tracks separately (switch each to "solo", then export to MP3). Export
+the stereo track as stereo to stereo.mp3; export the mono track as mono
+to mono.mp3, then use ffmpeg to put them together:
+
+    ffmpeg -f concat -i stereo-mono.script -c:a copy stereo-mono.mp3
+
+Note that the stereo-mono.script file is in the repository (but is
+trivial).
